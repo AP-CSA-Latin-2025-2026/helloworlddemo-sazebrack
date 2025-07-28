@@ -31,10 +31,20 @@ jobs:
         command: gradle test --tests LibraryTest#testHelloZebrack
         timeout: 1
         max-score: 15
+    - name: genericTest
+      id: generictest
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: genericTest
+        setup-command: ''
+        command: gradle test
+        timeout: 1
+        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         HELLOWORLDTEST_RESULTS: "${{steps.helloworldtest.outputs.result}}"
         ZEBRACKTEST_RESULTS: "${{steps.zebracktest.outputs.result}}"
+        GENERICTEST_RESULTS: "${{steps.generictest.outputs.result}}"
       with:
-        runners: helloworldtest,zebracktest
+        runners: helloworldtest,zebracktest,generictest
