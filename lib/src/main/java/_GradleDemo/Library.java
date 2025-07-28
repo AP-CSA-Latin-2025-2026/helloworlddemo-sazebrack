@@ -5,6 +5,6 @@ package _GradleDemo;
 
 public class Library {
 	public static void main(String[] args) {
-		System.out.println("Hello Mr Zebrack");
+		System.out.println("Hello Mr Zebrack!");
 	}
 }
